@@ -6,6 +6,7 @@ import 'package:mydiet/app/modules/home/components/ActionsButton.dart';
 import 'package:mydiet/app/modules/home/components/MealCard.dart';
 import 'package:mydiet/app/modules/home/pages/initial_page.dart';
 import 'package:mydiet/app/modules/perfil/perfil_page.dart';
+import 'package:mydiet/app/modules/store/store_page.dart';
 import 'package:mydiet/constants.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'home_store.dart';
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     InitialPage(),
     DietPage(),
+    StorePage(),
     PerfilPage(),
   ];
 
@@ -56,19 +58,24 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
+              icon: Icon(Icons.home),
+              label: 'Home',
+              backgroundColor: primaryColorWeek),
           BottomNavigationBarItem(
-            icon: Icon(Icons.food_bank),
-            label: 'Dieta',
-          ),
+              icon: Icon(Icons.local_dining_outlined),
+              label: 'Dieta',
+              backgroundColor: primaryColorWeek),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
+              icon: Icon(Icons.food_bank),
+              label: 'Loja',
+              backgroundColor: primaryColorWeek),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Perfil',
+              backgroundColor: primaryColorWeek),
         ],
         currentIndex: _selectedIndex,
+        backgroundColor: primaryColorWeek,
         selectedItemColor: primaryColorStrong,
         onTap: _onItemTapped,
       ),

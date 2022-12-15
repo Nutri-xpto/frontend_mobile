@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:mydiet/app/modules/diet_page/diet_page.dart';
 import 'package:mydiet/app/modules/home/components/ActionsButton.dart';
 import 'package:mydiet/app/modules/home/components/MealCard.dart';
 import 'package:mydiet/constants.dart';
@@ -26,6 +27,24 @@ class _InitialPageState extends State<InitialPage> {
     "2l de água"
   ];
 
+  List<String> _mealCards = [
+    'Café da manhã',
+    'Lanche',
+    'Almoço',
+    'Janta',
+  ];
+
+  List<String> _paths = [
+    'assets/cafe-da-manha.jpg',
+    'assets/lanche.jpg',
+    'assets/almoco.jpg',
+    'assets/janta.jpg',
+  ];
+
+  Future<Object?> navigateToDietPage() {
+    return Navigator.of(context).pushNamed('/home/diet');
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,37 +63,6 @@ class _InitialPageState extends State<InitialPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /* Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    const Text(
-                      "Meta do dia",
-                      style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Text(
-                      "60%",
-                      style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                ),
-                LinearPercentIndicator(
-                  barRadius: Radius.circular(10),
-                  restartAnimation: true,
-                  padding: EdgeInsets.only(top: 5),
-                  lineHeight: 18,
-                  percent: 0.5,
-                  animation: true,
-                  animationDuration: 1000,
-                  backgroundColor: primaryColorWeek,
-                  progressColor: primaryColorStrong,
-                ), */
                 Card(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
@@ -169,6 +157,31 @@ class _InitialPageState extends State<InitialPage> {
                 SizedBox(
                   height: 40,
                 ),
+                Container(
+                  width: size.width,
+                  height: 80,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      ActionsButton(
+                        action: "Abrir calculadora de elementos",
+                        onClick: () => {},
+                      ),
+                      ActionsButton(
+                        action: "Mudar dia de consulta",
+                        onClick: () => {},
+                      ),
+                      ActionsButton(
+                        action: "Acessar dieta completa",
+                        onClick: () =>
+                            {Navigator.of(context).pushNamed('/home/diet')},
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 const Text(
                   "Segunda Feira",
                   style: TextStyle(
@@ -179,13 +192,12 @@ class _InitialPageState extends State<InitialPage> {
                 Container(
                   margin: EdgeInsets.only(top: 15),
                   height: size.height * 0.45,
-                  child: ListView(
-                    children: [
-                      MealCard(meal: 'Café da manhã'),
-                      MealCard(meal: 'Lanche'),
-                      MealCard(meal: 'Almoço'),
-                      MealCard(meal: 'Janta'),
-                    ],
+                  child: ListView.builder(
+                    itemCount: _mealCards.length,
+                    itemBuilder: ((context, index) {
+                      return MealCard(
+                          meal: _mealCards[index], imagePath: _paths[index]);
+                    }),
                   ),
                 ),
                 const SizedBox(
@@ -214,18 +226,6 @@ class _InitialPageState extends State<InitialPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  width: size.width,
-                  height: 80,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      ActionsButton(action: "Abrir calculadora de elementos"),
-                      ActionsButton(action: "Mudar dia de consulta"),
-                      ActionsButton(action: "Acessar dieta completa"),
-                    ],
-                  ),
-                )
               ],
             ),
           )),

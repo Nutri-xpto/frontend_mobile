@@ -18,3 +18,79 @@ final allMealDescription = <MealDescription>[
       quantity: '150ml',
       preparationMode: 'Preparar apos tomar o cafe da manha'),
 ];
+
+final List<Map<String, dynamic>> allUsers = [
+  {
+    "product": "20% de desconto em creatina ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "32% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "10% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "100% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "1 consulta gratís ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "Consulta",
+    "points": 10,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "20% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "32% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "10% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "100% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "1 consulta gratís ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "Consulta",
+    "points": 10,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+];
+
+final List<Map<String, dynamic>> purchasedItens = [
+  {
+    "product": "20% de desconto em creatina ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+  {
+    "product": "32% de desconto ",
+    "points": 200,
+    "description": "20% de desconto em creatina na loja Suplementos PB"
+  },
+];

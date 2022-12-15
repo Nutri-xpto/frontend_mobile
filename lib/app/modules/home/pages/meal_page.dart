@@ -8,7 +8,8 @@ import 'package:mydiet/constants.dart';
 
 class MealPage extends StatefulWidget {
   final String meal;
-  const MealPage({super.key, required this.meal});
+  final String imagePath;
+  const MealPage({super.key, required this.meal, required this.imagePath});
 
   @override
   State<MealPage> createState() => _MealPageState();
@@ -22,26 +23,24 @@ class _MealPageState extends State<MealPage> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: TextButton(
-          child: Text(
-            option,
-            style: TextStyle(
-                color: (optionSelected == index)
-                    ? primaryColorStrong
-                    : Colors.white),
-          ),
-          onPressed: () {
-            setState(() {
-              optionSelected = index;
-            });
-          },
-          style: TextButton.styleFrom(
-              splashFactory: NoSplash.splashFactory,
-              side: BorderSide(
-                  width: 1.0,
+            child: Text(
+              option,
+              style: TextStyle(
                   color: (optionSelected == index)
-                      ? primaryColorStrong
-                      : Colors.white)),
-        ),
+                      ? Colors.white
+                      : primaryColorStrong),
+            ),
+            onPressed: () {
+              setState(() {
+                optionSelected = index;
+              });
+            },
+            style: TextButton.styleFrom(
+                elevation: 20,
+                splashFactory: NoSplash.splashFactory,
+                backgroundColor: (optionSelected == index)
+                    ? primaryColorStrong
+                    : Colors.white)),
       ),
     );
   }
@@ -74,17 +73,14 @@ class _MealPageState extends State<MealPage> {
                         style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 26,
-                            color: primaryColorStrong,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
                     Center(
                       child: Text(
                         'Horário: 8h30',
-                        style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 17,
-                            color: Colors.white),
+                        style:
+                            TextStyle(fontFamily: 'Montserrat', fontSize: 17),
                       ),
                     ),
                     Padding(
@@ -103,6 +99,10 @@ class _MealPageState extends State<MealPage> {
                 ),
               )),
               decoration: BoxDecoration(
+                image: new DecorationImage(
+                    opacity: 0.5,
+                    image: AssetImage(widget.imagePath),
+                    fit: BoxFit.cover),
                 borderRadius: BorderRadius.only(
                   bottomLeft: const Radius.circular(50.0),
                   bottomRight: const Radius.circular(50.0),

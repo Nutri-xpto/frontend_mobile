@@ -8,6 +8,8 @@ import 'package:mydiet/app/modules/login/login_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mydiet/app/modules/perfil/perfil_page.dart';
 import 'package:mydiet/app/modules/perfil/perfil_store.dart';
+import 'package:mydiet/app/modules/store/store_page.dart';
+import 'package:mydiet/app/modules/store/store_store.dart';
 
 class LoginModule extends Module {
   @override
@@ -16,6 +18,7 @@ class LoginModule extends Module {
     Bind.lazySingleton((i) => HomeStore()),
     Bind.lazySingleton((i) => DietPageStore()),
     Bind.lazySingleton((i) => PerfilStore()),
+    Bind.lazySingleton((i) => StoreStore()),
   ];
 
   @override
@@ -24,5 +27,6 @@ class LoginModule extends Module {
     ChildRoute('/home', child: (_, args) => const HomePage()),
     ChildRoute('/diet', child: (_, args) => const DietPage()),
     ChildRoute('/perfil', child: (_, args) => const PerfilPage()),
+    ChildRoute('/store', child: (_, args) => const StorePage()),
   ];
 }

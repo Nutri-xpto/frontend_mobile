@@ -5,18 +5,18 @@ import 'package:mydiet/constants.dart';
 
 class ActionsButton extends StatelessWidget {
   final String action;
+  final Function() onClick;
 
-  const ActionsButton({super.key, required this.action});
+  const ActionsButton({super.key, required this.action, required this.onClick});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 10.0),
       child: TextButton(
-        onPressed: () {},
+        onPressed: onClick,
         style: TextButton.styleFrom(
           fixedSize: Size.fromWidth(150),
-          //<-- VEJA AQUI,
           primary: primaryColorStrong,
           side: BorderSide(width: 1.0, color: primaryColorStrong),
         ),
@@ -24,8 +24,8 @@ class ActionsButton extends StatelessWidget {
           action,
           style: TextStyle(
               fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w300,
-              fontSize: 15),
+              fontWeight: FontWeight.bold,
+              fontSize: 14),
         ),
       ),
     );

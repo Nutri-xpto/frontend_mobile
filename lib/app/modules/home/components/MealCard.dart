@@ -6,8 +6,9 @@ import 'package:mydiet/constants.dart';
 
 class MealCard extends StatelessWidget {
   final String meal;
+  final String imagePath;
 
-  const MealCard({super.key, required this.meal});
+  const MealCard({super.key, required this.meal, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -15,56 +16,63 @@ class MealCard extends StatelessWidget {
       elevation: 3,
       color: primaryColorWeek,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: InkWell(
-        splashColor: primaryColorWeek,
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => MealPage(
-                      meal: meal,
-                    )),
-          );
-        },
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: 100,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  meal,
-                  style: const TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20),
-                ),
-                Text(
-                  'Horário: 8h',
-                  style: const TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w300,
-                      fontSize: 15),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10, right: 8.0),
-                      child: Text(
-                        '>>>',
-                        style: const TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w800,
-                            fontSize: 14),
-                      ),
-                    )
-                  ],
-                )
-              ],
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            image: new DecorationImage(
+                opacity: 0.8, image: AssetImage(imagePath), fit: BoxFit.cover)),
+        child: InkWell(
+          splashColor: primaryColorWeek,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MealPage(
+                        imagePath: imagePath,
+                        meal: meal,
+                      )),
+            );
+          },
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 100,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    meal,
+                    style: const TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20),
+                  ),
+                  Text(
+                    'Horário: 8h',
+                    style: const TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w300,
+                        fontSize: 15),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, right: 8.0),
+                        child: Text(
+                          '>>>',
+                          style: const TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w800,
+                              fontSize: 14),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

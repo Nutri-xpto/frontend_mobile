@@ -40,6 +40,18 @@ class DietPageState extends State<DietPage> {
                 day: "Quarta Feira",
                 meals: ['Café da manhã', 'Lanche', 'Almoço', 'Janta'],
               ),
+              CardDietByDay(
+                day: "Quinta Feira",
+                meals: ['Café da manhã', 'Lanche', 'Almoço', 'Janta'],
+              ),
+              CardDietByDay(
+                day: "Sexta Feira",
+                meals: ['Café da manhã', 'Lanche', 'Almoço', 'Janta'],
+              ),
+              CardDietByDay(
+                day: "Sábado",
+                meals: ['Café da manhã', 'Lanche', 'Almoço', 'Janta'],
+              ),
             ],
           ),
         ));
