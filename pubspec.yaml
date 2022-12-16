@@ -73,8 +73,11 @@ flutter:
     - assets/almoco.jpg
     - assets/janta.jpg
     - assets/perfil.jpg
+    - assets/perfil-2.jpg
     - assets/logo.png
     - assets/fonts/
+    - assets/profile.jpeg
+    - assets/profile-2.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

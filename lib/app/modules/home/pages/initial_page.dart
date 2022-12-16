@@ -17,10 +17,14 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage> {
   bool _isChecked = false;
   bool _isExpanded = false;
+  calculateGoalPercent() {}
+  late String data;
+  late String month;
+  late String timeS;
 
   List<String> _texts = [
-    "Café da manhã",
-    "Lanche",
+    "Café da manhã"
+        "Lanche",
     "Almoço",
     "Lanche",
     "Janta",
@@ -43,6 +47,14 @@ class _InitialPageState extends State<InitialPage> {
 
   Future<Object?> navigateToDietPage() {
     return Navigator.of(context).pushNamed('/home/diet');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    data = DateTime.now().day.toString();
+    month = DateTime.now().month.toString();
+    timeS = '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
   }
 
   @override
@@ -169,7 +181,121 @@ class _InitialPageState extends State<InitialPage> {
                       ),
                       ActionsButton(
                         action: "Mudar dia de consulta",
-                        onClick: () => {},
+                        onClick: () => {
+                          showDialog(
+                              context: context,
+                              builder: (((context) => AlertDialog(
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              "Sair",
+                                              style: TextStyle(
+                                                  fontFamily: 'Montserrat',
+                                                  color: primaryColorWeek,
+                                                  fontWeight: FontWeight.bold),
+                                            )),
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              "Socilitar",
+                                              style: TextStyle(
+                                                  fontFamily: 'Montserrat',
+                                                  color: primaryColorStrong,
+                                                  fontWeight: FontWeight.bold),
+                                            )),
+                                      ],
+                                      title: Text(
+                                        "Selecione a data e hora",
+                                        style:
+                                            TextStyle(fontFamily: 'Montserrat'),
+                                      ),
+                                      content: Container(
+                                        height: 180,
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "Selecione a data:",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontFamily: 'Montserrat',
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                    onPressed: () async {
+                                                      final date =
+                                                          await showDatePicker(
+                                                        context: context,
+                                                        initialDate:
+                                                            DateTime.now(),
+                                                        firstDate:
+                                                            DateTime(2021),
+                                                        lastDate:
+                                                            DateTime(2024),
+                                                      );
+                                                      setState(() {
+                                                        data = date!.day
+                                                            .toString();
+                                                        month = date!.month
+                                                            .toString();
+                                                      });
+                                                    },
+                                                    icon: Icon(
+                                                        Icons.calendar_month)),
+                                                Text(
+                                                  "Dia: ${data}/${month}",
+                                                  style: TextStyle(
+                                                      fontFamily: 'Montserrat'),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "Selecione a hora:",
+                                                  style: TextStyle(
+                                                      fontFamily: 'Montserrat'),
+                                                ),
+                                                IconButton(
+                                                    onPressed: () async {
+                                                      final time =
+                                                          await showTimePicker(
+                                                        initialTime:
+                                                            TimeOfDay.now(),
+                                                        context: context,
+                                                      );
+                                                      setState(() {
+                                                        timeS =
+                                                            '${time?.hour}:${time?.minute}';
+                                                      });
+                                                    },
+                                                    icon:
+                                                        Icon(Icons.lock_clock)),
+                                                Text(
+                                                  "Hora: ${timeS}",
+                                                  style: TextStyle(
+                                                      fontFamily: 'Montserrat'),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "OBS: Você receberá a confirmação da alteração apenas se o nutricionista aceitar",
+                                              style: TextStyle(
+                                                  fontFamily: 'Montserrat'),
+                                            )
+                                          ],
+                                        ),
+                                      )))))
+                        },
                       ),
                       ActionsButton(
                         action: "Acessar dieta completa",
